@@ -45,12 +45,7 @@
             $DName = filter_input(INPUT_POST, "DName", FILTER_SANITIZE_SPECIAL_CHARS);
             $DSpecialization = filter_input(INPUT_POST, "DSpecialization", FILTER_SANITIZE_SPECIAL_CHARS);
             $DPrice = filter_input(INPUT_POST, "DPrice", FILTER_SANITIZE_SPECIAL_CHARS);
-            
-            /*echo "Name is $HName";
-            echo "HID is $HID";
-            echo "Type is $HType";
-            echo "Address is $HAddress";
-            echo "Price is $HPrice";*/
+           
 
             if(empty($DID)){
                 echo"Please enter a Doctor ID$DID";
@@ -146,4 +141,69 @@
         }
     }
     mysqli_close($connection);
+?>
+
+<!-- FOR DOCTOR TABLE -->
+<?php 
+   function doctorTable(){
+    include 'database.php';
+    $sql = "SELECT *
+            FROM doctor";
+    $result = mysqli_query($connection, $sql);
+
+    // Check if any rows were returned
+    if (mysqli_num_rows($result) > 0) {
+        // Output a form for each task
+        
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row["DID"] . "</td>";
+            echo "<td>" . $row["HID"] . "</td>";
+            echo "<td>" . $row["Name"] . "</td>";
+            echo "<td>" . $row["Specialization"] . "</td>";
+            echo "<td>" . $row["Price"] . "</td>";
+            echo "</tr>";
+        }
+        
+    } else {
+        echo "<tr><td colspan='6'>No data found</td></tr>";
+    }
+   
+    
+    mysqli_close($connection);
+   }
+
+?>
+<!-- For hospital table -->
+<?php  
+  function hospital (){
+    include 'database.php';
+    $sql = "SELECT *
+    FROM healthcareprovider";
+      $result = mysqli_query($connection, $sql);
+  
+      // Check if any rows were returned
+      if (mysqli_num_rows($result) > 0) {
+      // Output a form for each task
+  
+      while ($row = mysqli_fetch_assoc($result)) {
+      echo "<tr>";
+      echo "<td>" . $row["ID"] . "</td>";
+      echo "<td>" . $row["Name"] . "</td>";
+      echo "<td>" . $row["Address"] . "</td>";
+      echo "<td>" . $row["Type"] . "</td>";
+      echo "<td>" . $row["Price"] . "</td>";
+      echo "</tr>";
+      }
+  
+      } else {
+      echo "<tr><td colspan='6'>No data found</td></tr>";
+      }
+  
+  
+      mysqli_close($connection);
+  }
+ 
+
+
 ?>

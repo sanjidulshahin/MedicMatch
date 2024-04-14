@@ -1,3 +1,4 @@
+<?php include 'config-dashboard.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <link rel="icon" href="images/logo.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="stylesheet" href="dashboard.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </head>
 <body>
     <header>
@@ -27,7 +29,43 @@
     </header>
 
     <div class="container">
-       
+        <div class="doctor-table">
+            <h1>Doctor Table</h1>
+           <table class="table">
+                <thead>
+                    <tr>
+                        <th>DID</th>
+                        <th>HID</th>
+                        <th>NAME</th>
+                        <th>SPECIALIZATION </th>
+                        <th>PRICE</th>
+                        
+                </thead>
+                <tbody>
+                    <?php 
+                    doctorTable(); ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="hospital-table">
+            <h1>Hospital Table</h1>
+           <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>ADDRESS</th>
+                        <th>TYPE </th>
+                        <th>PRICE</th>
+                        
+                </thead>
+                <tbody>
+                    <?php 
+                    hospital(); ?>
+                </tbody>
+            </table>
+        </div>
+            
         
     </div>
     <div id="addHospitalPopup" class="popup-container">
@@ -120,6 +158,9 @@
             <p>&copy; 2024 Group 3</p>
         </div>
     </footer>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script src="dashboard.js"></script>
+    
+
 </body>
 </html>

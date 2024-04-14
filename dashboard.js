@@ -1,40 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const forms = document.querySelectorAll(".form-container");
-
-  function toggleFormVisibility(form) {
-    forms.forEach(function (f) {
-      if (f !== form) {
-        f.classList.add("hidden");
-      }
-    });
-    form.classList.toggle("hidden");
-  }
-
-  document
-    .getElementById("addHospitalBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("addHospitalForm"));
-    });
-
-  document
-    .getElementById("deleteHospitalBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("deleteHospitalForm"));
-    });
-
-  document
-    .getElementById("addDoctorBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("addDoctorForm"));
-    });
-
-  document
-    .getElementById("deleteDoctorBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("deleteDoctorForm"));
-    });
-});
-
 // JavaScript to show and hide pop-up forms and overlay
 // Add event listener for Add Hospital button
 document.getElementById("addHospitalBtn").onclick = function () {
@@ -82,3 +45,53 @@ document.getElementById("overlay").onclick = function () {
     });
   this.classList.remove("active");
 };
+
+// ajax request to get the doctor chart data
+// $.ajax({
+//   url: "config-dashboard.php",
+//   dataType: "json",
+//   success: function (data) {
+//     // Process the data received from the server
+//     displayDoctorChart(data);
+//   },
+//   error: function (xhr, status, error) {
+//     // Handle errors
+//     console.error(xhr.responseText);
+//   },
+// });
+
+// function displayDoctorChart(data) {
+//   var cardDiv = $("#doctor-chart");
+//   cardDiv.append(
+//     `
+//     <canvas id="chart-doctor" width="200" height="200"></canvas>
+//     `
+//   );
+//   data.forEach((arr) => {
+//     var canvas = document.getElementById(`chart-${project.projectName}`);
+//     if (canvas) {
+//       // Chart configuration
+//       const chartData = {
+//         labels: [arr[0], "Not Completed"],
+//         datasets: [
+//           {
+//             label: "Task Status",
+//             data: [
+//               parseInt(project.completedTasks),
+//               parseInt(project.notCompletedTasks),
+//             ],
+//             backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+//           },
+//         ],
+//       };
+
+//       const chartConfig = {
+//         type: "doughnut", // Change the chart type to doughnut
+//         data: chartData,
+//       };
+
+//       // Create chart
+//       new Chart(canvas, chartConfig);
+//     }
+//   });
+// }
