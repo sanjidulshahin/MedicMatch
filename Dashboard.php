@@ -47,6 +47,7 @@
                 </tbody>
             </table>
         </div>
+     
         <div class="hospital-table">
             <h1>Hospital Table</h1>
            <table class="table">
@@ -157,10 +158,8 @@
             <p>MedicMatch</p>
             <p>&copy; 2024 Group 3</p>
         </div>
-    </footer>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    </footer> 
     <script src="dashboard.js"></script>
     
-
 </body>
 </html>

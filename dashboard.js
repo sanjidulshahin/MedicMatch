@@ -46,52 +46,29 @@ document.getElementById("overlay").onclick = function () {
   this.classList.remove("active");
 };
 
-// ajax request to get the doctor chart data
-// $.ajax({
-//   url: "config-dashboard.php",
-//   dataType: "json",
-//   success: function (data) {
-//     // Process the data received from the server
-//     displayDoctorChart(data);
-//   },
-//   error: function (xhr, status, error) {
-//     // Handle errors
-//     console.error(xhr.responseText);
-//   },
-// });
-
-// function displayDoctorChart(data) {
-//   var cardDiv = $("#doctor-chart");
-//   cardDiv.append(
-//     `
-//     <canvas id="chart-doctor" width="200" height="200"></canvas>
-//     `
-//   );
-//   data.forEach((arr) => {
-//     var canvas = document.getElementById(`chart-${project.projectName}`);
-//     if (canvas) {
-//       // Chart configuration
-//       const chartData = {
-//         labels: [arr[0], "Not Completed"],
-//         datasets: [
-//           {
-//             label: "Task Status",
-//             data: [
-//               parseInt(project.completedTasks),
-//               parseInt(project.notCompletedTasks),
-//             ],
-//             backgroundColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
-//           },
-//         ],
-//       };
-
-//       const chartConfig = {
-//         type: "doughnut", // Change the chart type to doughnut
-//         data: chartData,
-//       };
-
-//       // Create chart
-//       new Chart(canvas, chartConfig);
-//     }
-//   });
-// }
+window.onload = function() {
+      
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      title:{
+        text: "Total Requested Garbage Collection Chart"
+      },
+      axisY: {
+        title: "Total PickUp Garbage Quantity",
+        includeZero: true,
+        prefix: "",
+        suffix:  "kg"
+      },
+      data: [{
+        type: "bar",
+        yValueFormatString: "#,##0Kg",
+        indexLabel: "{y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bolder",
+        indexLabelFontColor: "white",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+      }]
+    });
+    chart.render();
+    
+    }
