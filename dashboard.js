@@ -1,40 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const forms = document.querySelectorAll(".form-container");
-
-  function toggleFormVisibility(form) {
-    forms.forEach(function (f) {
-      if (f !== form) {
-        f.classList.add("hidden");
-      }
-    });
-    form.classList.toggle("hidden");
-  }
-
-  document
-    .getElementById("addHospitalBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("addHospitalForm"));
-    });
-
-  document
-    .getElementById("deleteHospitalBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("deleteHospitalForm"));
-    });
-
-  document
-    .getElementById("addDoctorBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("addDoctorForm"));
-    });
-
-  document
-    .getElementById("deleteDoctorBtn")
-    .addEventListener("click", function () {
-      toggleFormVisibility(document.getElementById("deleteDoctorForm"));
-    });
-});
-
 // JavaScript to show and hide pop-up forms and overlay
 // Add event listener for Add Hospital button
 document.getElementById("addHospitalBtn").onclick = function () {
@@ -82,3 +45,30 @@ document.getElementById("overlay").onclick = function () {
     });
   this.classList.remove("active");
 };
+
+window.onload = function() {
+      
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      title:{
+        text: "Total Requested Garbage Collection Chart"
+      },
+      axisY: {
+        title: "Total PickUp Garbage Quantity",
+        includeZero: true,
+        prefix: "",
+        suffix:  "kg"
+      },
+      data: [{
+        type: "bar",
+        yValueFormatString: "#,##0Kg",
+        indexLabel: "{y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bolder",
+        indexLabelFontColor: "white",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+      }]
+    });
+    chart.render();
+    
+    }
