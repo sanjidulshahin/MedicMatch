@@ -45,30 +45,3 @@ document.getElementById("overlay").onclick = function () {
     });
   this.classList.remove("active");
 };
-
-window.onload = function() {
-      
-    var chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      title:{
-        text: "Total Requested Garbage Collection Chart"
-      },
-      axisY: {
-        title: "Total PickUp Garbage Quantity",
-        includeZero: true,
-        prefix: "",
-        suffix:  "kg"
-      },
-      data: [{
-        type: "bar",
-        yValueFormatString: "#,##0Kg",
-        indexLabel: "{y}",
-        indexLabelPlacement: "inside",
-        indexLabelFontWeight: "bolder",
-        indexLabelFontColor: "white",
-        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-      }]
-    });
-    chart.render();
-    
-    }

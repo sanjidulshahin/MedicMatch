@@ -67,7 +67,6 @@
             </table>
         </div>
             
-        
     </div>
     <div id="addHospitalPopup" class="popup-container">
         <div id="addHospitalForm" class="form-container hidden">
