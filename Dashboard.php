@@ -8,7 +8,7 @@
     <link rel="icon" href="images/logo.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="stylesheet" href="dashboard.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    
 </head>
 <body>
     <header>

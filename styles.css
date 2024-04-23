@@ -1,23 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
 /* General reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 /* Body styles */
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: Arial, sans-serif;
   line-height: 1.6;
-  background: rgb(86, 157, 199);
-  background: linear-gradient(
-    176deg,
-    rgba(86, 157, 199, 1) 0%,
-    rgba(111, 186, 243, 1) 23%,
-    rgba(133, 215, 252, 1) 100%
-  );
 }
 
 /* Header styles */
@@ -26,7 +19,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #fafafa;
+  background-color: #f0f0f0;
 }
 
 .logo {
@@ -56,28 +49,19 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #fafafa;
+  background-color: #aaa;
   color: #fff;
 }
 
 /* Additional CSS for the first section */
 .first-section {
-  height: 500px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  background-color: #ff8c00; /* Exciting background color (you can change it to your preferred color) */
   color: #fff; /* Text color */
-  text-align: left; /* Align text to the center */
-  font-size: small;
-  padding: 100px;
-}
-
-.tablets {
-  height: 500px;
+  padding: 50px 0; /* Padding for the section */
+  text-align: center; /* Align text to the center */
 }
 
 .container {
-  background-image: url(images/);
   max-width: 800px; /* Limit content width */
   margin: 0 auto; /* Center the container */
 }
@@ -95,8 +79,8 @@ h2 {
 button {
   padding: 10px 20px; /* Button padding */
   font-size: 1em; /* Button font size */
-  background-color: #fafafa; /* Button background color */
-  color: #1cc7d0; /* Button text color */
+  background-color: #fff; /* Button background color */
+  color: #ff8c00; /* Button text color */
   border: none; /* Remove button border */
   border-radius: 5px; /* Button border radius */
   cursor: pointer; /* Cursor style */
@@ -108,12 +92,43 @@ button {
   text-align: center; /* Align text to the center */
 }
 
-.meet {
-  color: white;
+.team-members {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.team-member {
+  width: 250px;
+  margin: 15px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  font-size: 1em;
+  margin-bottom: 8px;
 }
 
 /* Footer styles */
 footer {
+  background-color: #f0f0f0;
   padding: 10px 20px;
   text-align: center;
 }
@@ -127,93 +142,11 @@ footer {
 section {
   padding: 20px;
   margin: 20px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-
-/* ......................... */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-::selection {
-  color: #fff;
-  background: #1cc7d0;
-}
-.wrapper {
-  height: 400px;
-  width: 320px;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-.wrapper .card {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  padding: 5px;
-  background: #fff;
-  border-radius: 10px;
-  transform: translateY(0deg);
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-}
-.wrapper:hover > .front-face {
-  transform: rotateY(-180deg);
-}
-.wrapper .card img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-.wrapper .back-face {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  transform: rotateY(180deg);
-}
-.wrapper:hover > .back-face {
-  transform: rotateY(0deg);
-}
-.wrapper .back-face img {
-  height: 150px;
-  width: 150px;
-  padding: 5px;
-  border-radius: 50%;
-  background: linear-gradient(375deg, #1cc7d0, #2ede98);
-}
-.wrapper .back-face .info {
-  text-align: center;
-}
-.back-face .info .title {
-  font-size: 30px;
-  font-weight: 500;
-}
-.back-face ul {
-  display: flex;
-}
-.back-face ul a {
-  display: block;
-  height: 40px;
-  width: 40px;
-  color: #fff;
-  text-align: center;
-  margin: 0 5px;
-  line-height: 38px;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background: linear-gradient(375deg, #1cc7d0, #2ede98);
-}
-
-.grid-container {
+.second-section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
-  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
 }

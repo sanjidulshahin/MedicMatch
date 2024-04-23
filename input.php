@@ -36,7 +36,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Project 329</title>
+    <title>MedicMatch</title>
     <link rel="icon" href="images/logo.png" sizes="16x16" type="image/png" />
     <link rel="icon" href="images/logo.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="images/logo.png" />
@@ -48,7 +48,7 @@
   </head>
   <body>
     <header>
-      <div class="logo">Project 329</div>
+      <div class="logo">MedicMatch</div>
       <nav>
         <ul>
             <li><a href="Cost.php">Back</a></li>
@@ -217,8 +217,8 @@
 
     <footer>
       <div class="footer-content">
-        <p>Project 329</p>
-        <p>©2023 Group 38</p>
+        <p>MedicMatch</p>
+        <p>©2024 group 3</p>
       </div>
     </footer>
   </body>
