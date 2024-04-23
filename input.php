@@ -1,77 +1,119 @@
-<?php
-// Connect to the database
-$db = new mysqli("localhost", "root", "", "healthcarebd",3309);
+<?php 
+    include("database.php");
+    $query = " SELECT * from HealthcareProvider ";
+    $result = mysqli_query($connection,$query);
+    $query1 = " SELECT * from Doctor ";
+    $result1 = mysqli_query($connection,$query1);
 
-// Check for errors
-if ($db->connect_error) {
-    die("Connection failed: " . $db->connect_error);
-}
-
-// Define some dummy data for hospital types, specialities and price ranges
-$hospital_types = array("Public", "Private", "Charity");
-$specialities = array("Cardiology", "Neurology", "Oncology", "Orthopedics", "Pediatrics");
-$price_ranges = array("Low", "Medium", "High");
-
-// Define a function to populate hospital types from the database
-function getHospitalTypes($db) {
-    // Get all the hospital types from the database
-    $sql = "SELECT DISTINCT hospital_type FROM hospitals";
-    $result = $db->query($sql);
-
-    // Check if there are any results
-    if ($result->num_rows > 0) {
-        // Loop through the results and create an option element for each hospital type
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row["hospital_type"] . "'>" . $row["hospital_type"] . "</option>";
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $hospital_type = $_POST["hospital_type"];
+            $speciality = $_POST["speciality"];
+            $location = $_POST["location"];
+            $rating = $_POST["rating"];
+            $price = $_POST["price"];
         }
-    } else {
-        // If there are no results, use the dummy data
-        global $hospital_types;
-        foreach ($hospital_types as $type) {
-            echo "<option value='" . $type . "'>" . $type . "</option>";
-        }
-    }
-}
 
-// Define a function to populate specialities from the database
-function getSpecialities($db) {
-    // Get all the specialities from the database
-    $sql = "SELECT DISTINCT speciality FROM hospitals";
-    $result = $db->query($sql);
+        
+    mysqli_close($connection);
 
-    // Check if there are any results
-    if ($result->num_rows > 0) {
-        // Loop through the results and create an option element for each speciality
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row["speciality"] . "'>" . $row["speciality"] . "</option>";
-        }
-    } else {
-        // If there are no results, use the dummy data
-        global $specialities;
-        foreach ($specialities as $speciality) {
-            echo "<option value='" . $speciality . "'>" . $speciality . "</option>";
-        }
-    }
-}
-
-// Define a function to populate price ranges from the database
-function getPriceRanges($db) {
-    // Get all the price ranges from the database
-    $sql = "SELECT DISTINCT price_range FROM hospitals";
-    $result = $db->query($sql);
-
-    // Check if there are any results
-    if ($result->num_rows > 0) {
-        // Loop through the results and create an option element for each price range
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row["price_range"] . "'>" . $row["price_range"] . "</option>";
-        }
-    } else {
-        // If there are no results, use the dummy data
-        global $price_ranges;
-        foreach ($price_ranges as $range) {
-            echo "<option value='" . $range . "'>" . $range . "</option>";
-        }
-    }
-}
 ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Project 329</title>
+    <link rel="icon" href="images/logo.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="images/logo.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="images/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="cost.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Project 329</div>
+      <nav>
+        <ul>
+            <li><a href="Cost.php">Back</a></li>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <h2> The form elements are: </h2>
+      <p> <?php
+        echo $hospital_type;
+        echo $speciality;
+        echo $location;
+        echo $rating;
+        echo $price;
+        echo $_POST["hospital_type"];
+        echo $_POST["speciality"];
+      ?>
+      </p>
+        
+      <h1 class="desire">Best Matches</h1>
+
+      <!-- New table section -->
+      <div class="table-container" style="padding: 20px">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Hospital Name</th>
+              <th>Hospital ID</th>
+              <th>Hospital Type</th>
+              <th>Hospital Address</th>
+              <th>Hospital Bill</th>
+              <th>Doctor ID</th>
+              <th>Hospital ID</th>
+              <th>Doctor Name</th>
+              <th>Doctor Specialization</th>
+              <th>Cost of Visit</th>
+              <th>Take Appoinment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>Data 3</td>
+              <td>
+                <button class="submitbutton" onclick="openForm()">
+                  Click Here
+                </button>
+              </td>
+            </tr>
+            <!-- Add more rows as needed -->
+            <!-- Row 2 -->
+            <tr>
+              <td>Data 4</td>
+              <td>Data 5</td>
+              <td>Data 6</td>
+            </tr>
+            <!-- ... -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-content">
+        <p>Project 329</p>
+        <p>©2023 Group 38</p>
+      </div>
+    </footer>
+  </body>
+</html>
